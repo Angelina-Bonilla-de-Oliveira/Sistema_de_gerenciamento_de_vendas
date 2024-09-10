@@ -1,0 +1,25 @@
+Desafio de Projeto: Sistema de Gerenciamento de Vendas
+
+O objetivo deste projeto é criar um sistema de gerenciamento de vendas para uma loja, que permita armazenar e gerenciar informações sobre produtos, clientes e vendas realizadas. Você deverá criar um banco de dados, as tabelas necessárias e implementar as operações e consultas SQL para gerenciar o sistema de forma eficiente.
+
+Requisitos:
+Banco de Dados: Criar um banco de dados chamado sistema_vendas.
+
+Tabelas:
+
+Clientes: Armazena informações sobre os clientes (ID, nome, email, telefone).
+Produtos: Armazena informações sobre os produtos (ID, nome, preço, quantidade em estoque).
+Vendas: Armazena informações sobre as vendas realizadas (ID, cliente, produto, quantidade vendida, data).
+Consultas:
+
+Listar todas as vendas realizadas, incluindo o nome do cliente e o produto.
+Listar todas as compras de um cliente específico.
+Exibir o total de vendas realizadas por produto.
+Atualizações e Deleções:
+
+Atualizar o estoque de um produto após uma venda.
+Atualizar as informações de um cliente.
+Deletar uma venda e, se necessário, o cliente associado.
+Entrega:
+Arquivo SQL: Um arquivo contendo todos os comandos SQL necessários para criar e manipular o banco de dados.
+Relatório: Um relatório com screenshots das consultas e operações realizadas.
