@@ -1,0 +1,70 @@
+CREATE DATABASE sistema_vendas;
+USE sistema_vendas;
+
+CREATE TABLE clientes (
+    cliente_id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    email VARCHAR(100),
+    telefone VARCHAR(15)
+);
+
+CREATE TABLE produtos (
+    produto_id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    preco DECIMAL(10, 2),
+    quantidade_estoque INT
+);
+
+CREATE TABLE vendas (
+    venda_id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT,
+    produto_id INT,
+    quantidade_vendida INT,
+    data_venda DATE,
+    FOREIGN KEY (cliente_id) REFERENCES clientes(cliente_id),
+    FOREIGN KEY (produto_id) REFERENCES produtos(produto_id)
+);
+
+INSERT INTO clientes (nome, email, telefone)
+VALUES ('João Silva', 'joao@gmail.com', '1111-1111'),
+       ('Maria Souza', 'maria@gmail.com', '2222-2222'),
+       ('Carlos Santos', 'carlos@gmail.com', '3333-3333');
+
+INSERT INTO produtos (nome, preco, quantidade_estoque)
+VALUES ('Produto A', 50.00, 100),
+       ('Produto B', 30.00, 200),
+       ('Produto C', 20.00, 150);
+
+INSERT INTO vendas (cliente_id, produto_id, quantidade_vendida, data_venda)
+VALUES (1, 1, 2, '2024-09-10'),
+       (2, 2, 1, '2024-09-11'),
+       (3, 3, 5, '2024-09-12'),
+       (1, 3, 1, '2024-09-13'),
+       (2, 1, 3, '2024-09-14');
+
+SELECT v.venda_id, c.nome AS cliente, p.nome AS produto, v.quantidade_vendida, v.data_venda
+FROM vendas v
+JOIN clientes c ON v.cliente_id = c.cliente_id
+JOIN produtos p ON v.produto_id = p.produto_id;
+
+SELECT v.venda_id, p.nome AS produto, v.quantidade_vendida, v.data_venda
+FROM vendas v
+JOIN produtos p ON v.produto_id = p.produto_id
+WHERE v.cliente_id = 1;
+
+SELECT p.nome AS produto, SUM(v.quantidade_vendida) AS total_vendas
+FROM vendas v
+JOIN produtos p ON v.produto_id = p.produto_id
+GROUP BY p.nome;
+
+UPDATE produtos
+SET quantidade_estoque = quantidade_estoque - 2
+WHERE produto_id = 1;
+
+UPDATE clientes
+SET email = 'novoemail@gmail.com'
+WHERE cliente_id = 2;
+
+DELETE FROM vendas WHERE venda_id = 1;
+
+DELETE FROM clientes WHERE cliente_id = 1;
