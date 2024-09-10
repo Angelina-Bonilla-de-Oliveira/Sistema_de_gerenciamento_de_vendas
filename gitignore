@@ -1,0 +1,23 @@
+
+### 3. .gitignore
+
+```gitignore
+# Ignore arquivos de backup do MySQL Workbench
+*.bak
+*.backup
+
+# Ignore logs do MySQL
+*.log
+
+# Arquivos temporários de sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ignore arquivos de configuração do ambiente local
+.env
+
+# Ignore arquivos gerados pelo editor/IDE
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
